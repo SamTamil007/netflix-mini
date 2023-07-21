@@ -1,6 +1,3 @@
-import MobileMenu from "./MobileMenu";
-import NavbarItem from "./NavbarItem";
-import { BsChevronDown } from "react-icons/bs";
 import React, { useCallback, useEffect, useState } from "react";
 import {
   BellIcon,
@@ -8,9 +5,12 @@ import {
   ChevronDownIcon,
 } from "@heroicons/react/24/outline";
 
-import AccountMenu from "./AccountMenu";
+import AccountMenu from "@/components/AccountMenu";
+import MobileMenu from "@/components/MobileMenu";
+import NavbarItem from "@/components/NavbarItem";
 
 const TOP_OFFSET = 66;
+
 const Navbar = () => {
   const [showAccountMenu, setShowAccountMenu] = useState(false);
   const [showMobileMenu, setShowMobileMenu] = useState(false);
@@ -48,14 +48,14 @@ const Navbar = () => {
           showBackground ? "bg-zinc-900 bg-opacity-90" : ""
         }`}
       >
-        <img className="h-4 lg:h-7" src="/images/logo.png" alt="" />
+        <img src="/images/logo.png" className="h-4 lg:h-7" alt="Logo" />
         <div className="flex-row ml-8 gap-7 hidden lg:flex">
-          <NavbarItem label="Home" />
+          <NavbarItem label="Home" active />
           <NavbarItem label="Series" />
           <NavbarItem label="Films" />
-          <NavbarItem label="News & Popular" />
+          <NavbarItem label="New & Popular" />
           <NavbarItem label="My List" />
-          <NavbarItem label="Browse by languages" />
+          <NavbarItem label="Browse by Languages" />
         </div>
         <div
           onClick={toggleMobileMenu}
