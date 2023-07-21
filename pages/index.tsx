@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import { NextPageContext } from "next";
 import useCurrentUser from "@/hooks/useCurrentUser";
 import Navbar from "@/components/Navbar";
+import Billboard from "@/components/Billboard";
 
 // Uncomment if you plan to use the Inter font
 // const inter = Inter({ subsets: ["latin"] });
@@ -31,6 +32,7 @@ export default function Home() {
   return (
     <>
       <Navbar />
+      <Billboard />
     </>
   );
 }
