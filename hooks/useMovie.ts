@@ -3,7 +3,7 @@ import fetcher from "@/libs/fetcher";
 
 const useMovie = (id?: string) => {
   const { data, error, isLoading } = useSwr(
-    id ? `/api/movies/${id}` : null,
+    id ? `/api/movies/` : null,
     fetcher,
     {
       revalidateIfStale: false,
@@ -11,6 +11,7 @@ const useMovie = (id?: string) => {
       revalidateOnReconnect: false,
     }
   );
+
   return {
     data,
     error,

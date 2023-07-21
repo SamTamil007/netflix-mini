@@ -6,14 +6,13 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  if (req.method !== "GET") {
+    return res.status(405).end();
+  }
   try {
-    if (req.method !== "GET") {
-      return res.status(405).end();
-    }
-
     await serverAuth(req, res);
 
-    const { movieId } = req.query;
+    const movieId = req.query;
 
     if (typeof movieId !== "string") {
       throw new Error("Invalid Id");
@@ -23,13 +22,13 @@ export default async function handler(
       throw new Error("Missing Id");
     }
 
-    const movies = await prismadb.movie.findUnique({
+    const movie = await prismadb.movie.findUnique({
       where: {
         id: movieId,
       },
     });
 
-    return res.status(200).json(movies);
+    return res.status(200).json(movie);
   } catch (error) {
     console.log(error);
     return res.status(500).end();
