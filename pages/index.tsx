@@ -5,6 +5,8 @@ import { NextPageContext } from "next";
 import useCurrentUser from "@/hooks/useCurrentUser";
 import Navbar from "@/components/Navbar";
 import Billboard from "@/components/Billboard";
+import MovieList from "@/components/MovieList";
+import useMoviesList from "@/hooks/useMovieList";
 
 // Uncomment if you plan to use the Inter font
 // const inter = Inter({ subsets: ["latin"] });
@@ -27,12 +29,15 @@ export async function getServerSideProps(context: NextPageContext) {
 }
 
 export default function Home() {
-  const { data: user } = useCurrentUser();
+  const { data: movies = [] } = useMoviesList();
 
   return (
     <>
       <Navbar />
       <Billboard />
+      <div className="pb-40">
+        <MovieList title="Trending Now" data={movies} />
+      </div>
     </>
   );
 }
