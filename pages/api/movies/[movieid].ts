@@ -12,7 +12,7 @@ export default async function handler(
   try {
     await serverAuth(req, res);
 
-    const movieId = req.query;
+    const movieId = req.query["movieid"] as string;
 
     if (typeof movieId !== "string") {
       throw new Error("Invalid Id");
