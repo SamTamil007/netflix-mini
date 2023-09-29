@@ -1,5 +1,5 @@
 import axios from "axios";
-import Input from "@/components/Input";
+import Input from "./Input";
 import { useCallback, useState } from "react";
 import { NextPageContext } from "next";
 import { getSession, signIn } from "next-auth/react";
